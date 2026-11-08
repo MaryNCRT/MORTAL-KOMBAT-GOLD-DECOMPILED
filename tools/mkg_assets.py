@@ -6,6 +6,7 @@ Nothing is written next to the source files.
 Usage:
     python -I tools/mkg_assets.py img2png <file.IMG> <out_dir>     # ARGB1555 linear -> PNG (needs Pillow+numpy)
     python -I tools/mkg_assets.py geo-check <disc_dir>             # validate GEO block layout on every file
+    python -I tools/mkg_assets.py geo-tile <disc_dir>              # full parser (mesh + sprite blocks), exact tiling
     python -I tools/mkg_assets.py kat-list <file.KAT>              # list sound-bank entries
     python -I tools/mkg_assets.py anim-table <1ST_READ.BIN>        # dump the animation descriptor tables
 """
@@ -115,8 +116,38 @@ def cmd_anim_table(path):
         print("%08x\t%08x\t%d\t%d\t%d" % r)
 
 
+def cmd_geo_tile(disc):
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import mkg_geo
+    from collections import Counter
+    ok, bad, kinds = 0, [], Counter()
+    for f in sorted(glob.glob(os.path.join(disc, "*.GEO"))):
+        d = open(f, "rb").read()
+        if len(d) < 0x20:
+            continue
+        try:
+            blocks = mkg_geo.parse_geo(d)
+        except mkg_geo.GeoError as e:
+            bad.append((os.path.basename(f), str(e)))
+            continue
+        for b in blocks:
+            kinds[(b.kind, b.flags)] += 1
+        if mkg_geo.check_tiling(d, blocks):
+            ok += 1
+        else:
+            bad.append((os.path.basename(f), "does not tile"))
+    print("files tiled exactly:", ok, " failures:", len(bad))
+    for k, v in sorted(kinds.items()):
+        print("  %-6s flags=0x%03x blocks=%d" % (k[0], k[1], v))
+    for b in bad:
+        print("  FAIL", *b)
+    return not bad
+
+
 if __name__ == "__main__":
     c = sys.argv[1] if len(sys.argv) > 1 else ""
+    if c == "geo-tile":
+        sys.exit(0 if cmd_geo_tile(sys.argv[2]) else 1)
     if c == "img2png":
         cmd_img2png(sys.argv[2], sys.argv[3])
     elif c == "geo-check":

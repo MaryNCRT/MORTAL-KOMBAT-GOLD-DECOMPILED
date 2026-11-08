@@ -1,0 +1,121 @@
+op	handler	operands	operand_source	flow	operand_kind	node_fields(+0x40 resolved; ?=raw disp)	callees	pseudo_regs	operand_count_agrees_with_mk4_pc	uses_in_decoded_streams	confidence_operands_flow	verification	notes
+00	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	47	high	static: slot points at dispatcher	
+01	8c0dd1a0	1	fetch-sites	next	word	24?,28?,4?,8?	8c0dd1a0,8c0974e0	3104,311c,3120,3130,3134	yes	83	high	static: fetch call sites (VmHandlers.java)	
+02	8c0dd740	1	fetch-sites	next	word	24?,28?,4?,8?	8c0dd740,8c098520	3104,311c,3120,3130,3134,3144	yes	62	high	static: fetch call sites (VmHandlers.java)	
+03	8c0de360	0	fetch-sites	next	word	4?,8?	8c0de360,8c098b20,8c0974e0	3104,3120	yes	228	high	static: fetch call sites (VmHandlers.java)	
+04	8c0ddde0	0	fetch-sites	next	word	4?,8?	8c0ddde0,8c098520	3104,3120,3134,3144	yes	47	high	static: fetch call sites (VmHandlers.java)	
+05	8c0de160	0	fetch-sites	next	word	4?,8?	8c0de160,8c0975a0	3104,3120,3134,3144	yes	291	high	static: fetch call sites (VmHandlers.java)	
+06	8c0dd3c0	0	fetch-sites	next	word	4?,8?	8c0dd3c0,8c0982c0	3104,3120,3134,3144	yes	9	high	static: fetch call sites (VmHandlers.java)	
+07	8c0dd4c0	0	fetch-sites	next	word	28?,4?,8?	8c0dd4c0,8c098240	3104,311c,3120,3130	yes	4	high	static: fetch call sites (VmHandlers.java)	
+08	8c0dd5c0	low0	read	next	word	24?,4?,8?	8c0dd5c0	3104,311c,3120,3130,3134	partial	3	high	static: handler read by hand	clip word present iff (w & 0xFF)==0; clip -> node(R311C)+0x24
+09	8c0dd2c0	1	fetch-sites	next	word	24?,4?,8?	8c0dd2c0,8c098440	3104,311c,3120,3130	yes	20	high	static: fetch call sites (VmHandlers.java)	
+0a	8c0ddfe0	0	fetch-sites	next	word	28?		311c,3130,3134	yes	0	high	static: fetch call sites (VmHandlers.java)	
+0b	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+0c	8c0de0a0	1	fetch-sites	next	word	28?	8c0de120	3118,311c,3130,3134	yes	16	high	static: fetch call sites (VmHandlers.java)	
+0d	8c0de120	0	fetch-sites	next	word		8c096820		yes	8	high	static: fetch call sites (VmHandlers.java)	
+0e	8c0de520	1	fetch-sites	next	word	24?,28?,38?		3104,3120,3130	yes	36	high	static: fetch call sites (VmHandlers.java)	
+0f	8c0de5a0	1	fetch-sites	next	word	24?,28?		3118,311c,3130,3134	yes	148	high	static: fetch call sites (VmHandlers.java)	
+10	8c0de640	0	fetch-sites	next	word	38?,8?	8c096860,8c0de640	30cc,310c,3118,311c,3120,3134,3144,3150	yes	9	high	static: fetch call sites (VmHandlers.java)	
+11	8c0de760	1	fetch-sites	next	word	24?,28?	8c068080	30cc,311c,3130,3134,3150	yes	28	high	static: fetch call sites (VmHandlers.java)	
+12	8c0de820	0	fetch-sites	next	word	28?		311c,3134	yes	99	high	static: fetch call sites (VmHandlers.java)	
+13	8c0de880	0	fetch-sites	next	word	24?,28?,4?		3104,311c,3130	yes	0	high	static: fetch call sites (VmHandlers.java)	
+14	8c0de8e0	0	fetch-sites	next	word	24?,4?	8c098ea0	3104,311c,3144	yes	1	high	static: fetch call sites (VmHandlers.java)	
+15	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+16	8c0e0280	0	fetch-sites	next	word			3130	yes	22	high	static: fetch call sites (VmHandlers.java)	
+17	8c0ddee0	1	fetch-sites	next	word	24?,4?,8?	8c0ddee0,8c0963e0	3104,3118,311c,3120,3130	yes	0	high	static: fetch call sites (VmHandlers.java)	
+18	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+19	8c0dd860	0	fetch-sites	next	word		8c0dd8a0	3134,3144	yes	3	high	static: fetch call sites (VmHandlers.java)	
+1a	8c0dda60	1	fetch-sites	next	word	24?,28?	8c0ddb40	311c,3130,3144	yes	0	high	static: fetch call sites (VmHandlers.java)	
+1b	8c0ddac0	1	fetch-sites	next	word			3134,3144	yes	0	high	static: fetch call sites (VmHandlers.java)	
+1c	8c0ddb00	0	fetch-sites	next	word		8c0ddb40	3134,3144	yes	0	high	static: fetch call sites (VmHandlers.java)	
+1d	8c0de040	0	fetch-sites	next	word		8c098ea0	3134,3144	yes	29	high	static: fetch call sites (VmHandlers.java)	
+1e	8c0df4e0	0	fetch-sites	next	word		8c11e880	3130,3134	yes	13	high	static: fetch call sites (VmHandlers.java)	
+1f	8c0dca60	1	fetch-sites	next	word	68		3120,3130	yes	30	high	static: fetch call sites (VmHandlers.java)	
+20	8c0dca00	0	fetch-sites	next	word		8c12fda0	3130,3134	yes	67	high	static: fetch call sites (VmHandlers.java)	
+21	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+22	8c0df3e0	0	fetch-sites	next	word	4c	8c0dab40	3104,3120	yes	49	high	static: fetch call sites (VmHandlers.java)	
+23	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+24	8c0dcea0	0	fetch-sites	next	word		8c1037c0		yes	6	high	static: fetch call sites (VmHandlers.java)	
+25	8c0dcca0	0	fetch-sites	next	word		8c130000	3130,3134	yes	45	high	static: fetch call sites (VmHandlers.java)	
+26	8c0dcc40	0	fetch-sites	next	word		8c130040	3130,3134	yes	66	high	static: fetch call sites (VmHandlers.java)	
+27	8c0dcbe0	0	fetch-sites	next	word		8c12fe60	3130,3134	yes	107	high	static: fetch call sites (VmHandlers.java)	
+28	8c0df3a0	0	fetch-sites	next	word		8c0dab40		yes	38	high	static: fetch call sites (VmHandlers.java)	
+29	8c0df360	0	fetch-sites	next	word		8c103760		yes	21	high	static: fetch call sites (VmHandlers.java)	
+2a	8c0dcac0	0	fetch-sites	next	word		8c0da980	3134,3140	yes	62	high	static: fetch call sites (VmHandlers.java)	
+2b	8c0dcb80	0	fetch-sites	next	word		8c12ff00	3130,3134	yes	80	high	static: fetch call sites (VmHandlers.java)	
+2c	8c0dcb20	0	fetch-sites	next	word		8c130220	3130,3134	yes	1	high	static: fetch call sites (VmHandlers.java)	
+2d	8c0dcd60	0	fetch-sites	next	word	74		3120,3130	yes	15	high	static: fetch call sites (VmHandlers.java)	
+2e	8c0dcda0	0	fetch-sites	next	word		8c138b00		yes	4	high	static: fetch call sites (VmHandlers.java)	
+2f	8c0dcde0	1	fetch-sites	branch	word		8c1371e0,8c0df740	3128	yes	1	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+30	8c0dcee0	0	fetch-sites	end	word		8c088300		yes	7	high	static: fetch call sites (VmHandlers.java)	calls 0x8C088300, no re-dispatch
+31	00000000	0	fetch-sites	end	word				yes	0	high	n/a (null slot)	null slot
+32	8c0dcfa0	1	fetch-sites	end	native+			3130	yes	510	high	static: fetch call sites (VmHandlers.java)	calls native operand, no re-dispatch
+33	8c0df740	1	fetch-sites	jump	word	48		3120,3130	yes	86	high	static: fetch call sites (VmHandlers.java)	pc = operand (packed)
+34	8c0dcf00	0	fetch-sites	next	word	8?	8c0dcf00	310c,3120,3134	yes	204	high	static: fetch call sites (VmHandlers.java)	
+35	8c0dd0c0	1	fetch-sites	next	native+			3104,3130	yes	70	high	static: fetch call sites (VmHandlers.java)	
+36	8c0df9c0	2	fetch-sites	branch	native+		8c0df740	3104,3128,3130	yes	8	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+37	8c0dcfe0	0	fetch-sites	next	word	8?	8c0e09a0,8c0dcfe0	30cc,310c,3120,3128,3130,3134,3150	yes	3	high	static: fetch call sites (VmHandlers.java)	
+38	8c0df2c0	1	fetch-sites	next	word	44		311c,3130	yes	32	high	static: fetch call sites (VmHandlers.java)	
+39	8c0df320	0	fetch-sites	next	word	44		311c,3130	yes	12	high	static: fetch call sites (VmHandlers.java)	
+3a	8c0df7a0	0	fetch-sites	next	word	78		3120,3134	yes	26	high	static: fetch call sites (VmHandlers.java)	
+3b	8c0df800	0	fetch-sites	next	word	38?,78		3120,3134	yes	26	high	static: fetch call sites (VmHandlers.java)	
+3c	8c0df8a0	24	read	select	word	34?,48,8?		3110,3120,3130	no	12	high	static: handler read by hand	pc = mem[pc + node[+0x34]]; inline table measured at 24 packed targets in all 14 uses (MK4: 16)
+3d	8c0df900	1	fetch-sites	branch	word		8c0df740	314c	yes	4	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+3e	8c0df960	0	fetch-sites	end	word	8?	8c0df960	310c,3120	yes	25	high	static: fetch call sites (VmHandlers.java)	re-installs itself as node callback (+0x08), sets +0x84, R310C=0x3C, pause; never advances pc
+3f	8c1016a0	0	fetch-sites	end	word	74	8c139200,8c138480,8c135f20,8c137700,8c0a8d20,8c139a60,8c101780	3114,3120,3128,3130,314c	yes	98	high	static: fetch call sites (VmHandlers.java)	sets node[+0x74]=0x200B, runs natives, ends in native 0x8C101780; no fetch, no re-dispatch
+40	8c0dd120	2	fetch-sites	next	word		8c150aa0	310c,3130,3138	yes	58	high	static: fetch call sites (VmHandlers.java)	
+41	8c0df480	0	fetch-sites	next	word		8c11e8e0	3130,3134	yes	27	high	static: fetch call sites (VmHandlers.java)	
+42	8c0dfa40	1	fetch-sites	branch	word		8c0df740	3128	yes	6	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+43	8c0dfaa0	2	read	branch	native+		8c0dfa40	3104,3130	yes	0	high	static: handler read by hand	fetch 1 (native fn, called) + branch-or-skip helper 0x8C0DFA40 consumes 1
+44	8c0dfb00	1	fetch-sites	branch	word		8c136c60,8c0dfa40	3128	yes	2	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+45	8c0dfb60	1	read	branch	word	38?,40	8c137100	3100,3104,3120,3128,3134	yes	12	high	static: handler read by hand	every path ends in fetch+dispatch (skip) or jump via 0x8C0DF740 (take)
+46	8c0dfe20	prefixed	read	next	word	4?,8?	8c0dfe20,8c0e0860,8c097bc0	3104,3120,3134,3144	yes	15	high	static: handler read by hand	+1 word (clip -> node(R311C)+0x24) iff ((w>>8)&0xFF)==2 (0x8C0E0860)
+47	8c0dff20	prefixed	read	next	word	4?,8?	8c0dff20,8c0e0860,8c097520	3104,3120,3134,3144	yes	105	high	static: handler read by hand	+1 word (clip -> node(R311C)+0x24) iff ((w>>8)&0xFF)==2 (0x8C0E0860)
+48	8c0e0020	prefixed	read	next	word	4?,8?	8c0e0020,8c0e0860,8c097560	3104,3120	yes	108	high	static: handler read by hand	+1 word (clip -> node(R311C)+0x24) iff ((w>>8)&0xFF)==2 (0x8C0E0860)
+49	8c0e0120	prefixed	read	next	word		8c0e0860,8c098ea0	3134,3144	yes	27	high	static: handler read by hand	+1 word (clip -> node(R311C)+0x24) iff ((w>>8)&0xFF)==2 (0x8C0E0860)
+4a	8c0e0180	0	fetch-sites	next	word	4?,8?	8c0e0180,8c098140	3104,3120,3134,3144	yes	148	high	static: fetch call sites (VmHandlers.java)	
+4b	8c0e02c0	0	fetch-sites	next	word	8?	8c0e02c0	3120	yes	63	high	static: fetch call sites (VmHandlers.java)	
+4c	8c0e03a0	0	fetch-sites	next	word	8?	8c0e03a0	3120	yes	6	high	static: fetch call sites (VmHandlers.java)	
+4d	8c0de260	0	fetch-sites	next	word	4?,8?	8c0de260,8c098040	3104,3120,3134,3144	yes	71	high	static: fetch call sites (VmHandlers.java)	
+4e	8c0deb80	0	fetch-sites	next	word			311c	yes	12	high	static: fetch call sites (VmHandlers.java)	
+4f	8c0deac0	0	fetch-sites	next	word		8c0a5760	3130,3134	yes	85	high	static: fetch call sites (VmHandlers.java)	
+50	8c0debc0	1	fetch-sites	next	word	48	8c134740	3114,3120,3128,3130,3134	yes	0	high	static: fetch call sites (VmHandlers.java)	
+51	8c0de9a0	0	fetch-sites	next	word		8c134740	3130,3134	yes	7	high	static: fetch call sites (VmHandlers.java)	
+52	8c0dea00	0	fetch-sites	next	word		8c134700	3130,3134	yes	1	high	static: fetch call sites (VmHandlers.java)	
+53	8c0de940	0	fetch-sites	next	word		8c134800	3130,3134	yes	3	high	static: fetch call sites (VmHandlers.java)	
+54	8c0dec60	0	fetch-sites	next	word	8?	8c0e09a0,8c0dec60	30cc,310c,3120,3128,3130,3134,3150	yes	0	high	static: fetch call sites (VmHandlers.java)	
+55	8c0ded40	2	fetch-sites	next	native+	48		30cc,3104,3120,3128,3130,3134,3150	yes	2	high	static: fetch call sites (VmHandlers.java)	
+56	8c0deb20	0	fetch-sites	next	word		8c0a5800	3130,3134	yes	10	high	static: fetch call sites (VmHandlers.java)	
+57	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+58	8c0def00	3	fetch-sites	next	float		8c138ee0	311c,3130	yes	60	high	static: fetch call sites (VmHandlers.java)	
+59	8c0defa0	4	read	next	word	48,8?	8c139400	3104,3120	yes	12	high	static: handler read by hand	passes pc to 0x8C139400 then pc += 4
+5a	8c0df020	1	fetch-sites	next	float		8c138ee0	3130	yes	57	high	static: fetch call sites (VmHandlers.java)	
+5b	8c0df0c0	0	fetch-sites	next	word		8c139240		yes	53	high	static: fetch call sites (VmHandlers.java)	
+5c	8c0df260	1	fetch-sites	next	float			311c,3130	yes	10	high	static: fetch call sites (VmHandlers.java)	
+5d	8c0df200	2	fetch-sites	next	float		8c139560	3130,3134	yes	0	high	static: fetch call sites (VmHandlers.java)	
+5e	8c0dea60	0	fetch-sites	next	word		8c1347c0	3130,3134	yes	10	high	static: fetch call sites (VmHandlers.java)	
+5f	8c0df080	1	fetch-sites	next	float		8c138ee0		yes	17	high	static: fetch call sites (VmHandlers.java)	
+60	8c0df5e0	0	fetch-sites	next	word		8c1377c0	30cc,3150	yes	80	high	static: fetch call sites (VmHandlers.java)	
+61	8c0df700	0	fetch-sites	next	word		8c138e20		yes	5	high	static: fetch call sites (VmHandlers.java)	
+62	8c0df620	0	fetch-sites	next	word		8c06c0e0	3130,3134	yes	87	high	static: fetch call sites (VmHandlers.java)	
+63	8c0df680	1	fetch-sites	next	float		8c135280		yes	28	high	static: fetch call sites (VmHandlers.java)	
+64	8c0df6c0	0	fetch-sites	next	word		8c139600		yes	1	high	static: fetch call sites (VmHandlers.java)	
+65	8c0dee60	3	fetch-sites	next	float		8c138fa0	311c,3130	yes	5	high	static: fetch call sites (VmHandlers.java)	
+66	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+67	8c0dc960	0	fetch-sites	next	word			30cc,3104,3128,3130,3134,3150	yes	0	high	static: slot points at dispatcher	
+68	8c0dfd20	prefixed	read	next	word	4?,8?	8c0dfd20,8c0e0860,8c097760	3104,3120,3134,3144	yes	1	high	static: handler read by hand	+1 word (clip -> node(R311C)+0x24) iff ((w>>8)&0xFF)==2 (0x8C0E0860)
+69	8c0dfc60	0	fetch-sites	next	word	4?,8?	8c0dfc60,8c0977a0	3104,3120	yes	7	high	static: fetch call sites (VmHandlers.java)	
+6a	8c0de460	0	fetch-sites	next	word	4?,8?	8c0de460,8c097f40	3104,3120	yes	8	high	static: fetch call sites (VmHandlers.java)	
+6b	8c0dcd00	0	fetch-sites	next	word		8c12ff00,8c138540	3104,3130,3134	yes	25	high	static: fetch call sites (VmHandlers.java)	
+6c	8c0df140	1	fetch-sites	next	float	24?,44,5c	8c139240,8c0e09a0	3104,311c,3120,3130,3134	yes	6	high	static: fetch call sites (VmHandlers.java)	
+6d	8c0dee20	1	fetch-sites	next	float		8c09f2a0		yes	7	high	static: fetch call sites (VmHandlers.java)	
+6e	8c0df100	0	fetch-sites	next	word		8c122da0		yes	12	high	static: fetch call sites (VmHandlers.java)	
+6f	8c0dce40	1	fetch-sites	branch	word		8c137460,8c0df740	3128	yes	0	high	static: fetch call sites (VmHandlers.java)	if condition: pc = last operand (packed) else skip it
+70	8c0df540	1	fetch-sites	next	float		8c11e8e0	3128,3130,3134,3138	yes	0	high	static: fetch call sites (VmHandlers.java)	
+71	8c0e0480	1	fetch-sites	next	word	4?,8?	8c0e0480,8c0e0580	3104,3114,3120,3130	yes	5	high	static: fetch call sites (VmHandlers.java)	
+72	8c0e09e0	0	fetch-sites	next	word		8c09cdc0	3138	yes	0	high	static: fetch call sites (VmHandlers.java)	
+73	8c0e0a20	0	fetch-sites	next	word		8c165ea0,8c12fd80	30cc,3130,3138,3150	yes	1	high	static: fetch call sites (VmHandlers.java)	
+74	8c0e0ac0	0	fetch-sites	next	word		8c12fd80	30cc,3138,3150	yes	1	high	static: fetch call sites (VmHandlers.java)	
+75	8c0e0b20	0	fetch-sites	next	word	4?	8c130000	311c,3130	yes	1	high	static: fetch call sites (VmHandlers.java)	
+76	8c0e0ba0	0	fetch-sites	next	word	4?	8c130000	311c,3130	yes	1	high	static: fetch call sites (VmHandlers.java)	
+77	8c0e0c20	0	fetch-sites	next	word		8c06c0e0,8c138540	3104,3130,3134	yes	1	high	static: fetch call sites (VmHandlers.java)	

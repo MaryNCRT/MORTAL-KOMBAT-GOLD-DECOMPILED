@@ -9,6 +9,17 @@ Every statement in this report is tagged:
 - **[O] observed**: seen once (string, hex dump, decompiler output) but not yet systematically checked.
 - **[H] hypothesis**: plausible, needs confirmation. Never build on it without checking.
 
+> **Phase 1 corrections (2026-11-08)**. Three Phase 0 statements below were wrong and are superseded:
+> 1. "Opcode numbering differs from MK4 PC": **false**. Gold uses MK4's numbering (nop slots, the
+>    null `0x31` and 118/120 operand counts match). See docs/systems/combat-vm.md.
+> 2. "Script streams around `0x8C106300`": that region is a data table, not wordcode (`0x4F` has no
+>    operand in Gold). Real scripts live in `0x8C2D0000–0x8C33B954`.
+> 3. "`0x8C11E880/8E0/960` = script entry helpers" and "`0x8C32AF14` = VM handler table": **false**.
+>    Those are table-lookup-and-call helpers. The VM entry is `0x8C0DC920`, the dispatcher `0x8C0DC960`,
+>    the handler table `0x8C322268`.
+> Also: Flycast 2.2.0 has **no** GDB server (tested), and REA rejects the SH-4 ELF (tested).
+> See docs/reverse-engineering/dynamic-analysis.md.
+
 Cross-reference with MK4 lives in [../cross-reference/](../cross-reference/mk4-to-mkg.md).
 
 ---

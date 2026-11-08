@@ -1,6 +1,6 @@
 # PROGRESS.md — MK Gold decomp / PC port
 
-**Last update:** 2026-11-08 · **Phase:** 0 (audit) complete → Phase 1 (static-analysis base) next.
+**Last update:** 2026-11-08 · **Phase:** 1 (SH-4 engine reconstruction) in progress.
 
 ## Where everything is
 
@@ -11,36 +11,53 @@
 | `Dreamcast/` | Flycast 2.2.0 + identical copy of the GDI in `Roms/`. Do not modify. |
 | `EXTRACTED/disc/` | 375 files extracted from the disc; `EXTRACTED/IP.BIN`. |
 | `ORIGINAL/` | `1ST_READ.BIN` (SHA-256 `05185248…1e37a`) + `1ST_READ.elf` wrapper. |
-| `OUTPUT/` | Ghidra project, inventories (`functions.tsv` 4220, `strings.tsv`, `iso_files.tsv`, `anim_descriptors.tsv`), PNG textures, decompiler output. |
+| `OUTPUT/` | Ghidra project (`ghidra/MKG`), inventories (`inventory_p1/`), VM handler analysis (`vm/`), full decompilation (`decomp_all.c`), logs. |
+| `OUTPUT/flycast-gdb/` | Isolated Flycast copy used for the GDB test (not the user's install). |
 | `REFERENCE/` | Pinned community repos (read-only). |
-| `docs/` | Audit, formats, cross-reference. |
 
 ## Status (measured)
 
-| Metric | Value |
-|---|---|
-| Functions found by Ghidra | 4,220 (540,894 B; about 37 % of the ~1.45 MB code region) |
-| IDENTIFIED / RECONSTRUCTED / VERIFIED | 4 / 0 / 0 (`python -I tools/tracking.py report`) |
-| Formats decoded and validated | IMG 149/149 · GEO type-1 57 files · KAT 25/25 directories · animation descriptors 547 (544/546 size-checked) |
+| Metric | Value | Source |
+|---|---|---|
+| Functions | 6,660 (Phase 0: 4,220) | `tools/tracking.py report` |
+| Confirmed / probable starts (game band) | 3,030 / 1,802 | discovery column |
+| Game-band bytes inside functions | 604,390 of 1,118,496 (54 %) | `OUTPUT/inventory_p1/coverage.tsv` |
+| IDENTIFIED / RECONSTRUCTED / VERIFIED | 125 / 3 / 3 | tracker |
+| Oracle vectors | 1,400 trials over 3 functions, 0 mismatches | `tests/oracle/vectors/` |
+| VM opcodes characterised | 120 / 120 slots (operand rule + flow), all from Gold handlers | `docs/systems/vm-opcodes.tsv` |
+| Script streams decoded | 738 / 739 clean (623 entry seeds) | `tools/mkg_vm.py scan` |
+| GEO files fully tiled | 148 / 148 (meshes + sprites) | `tools/mkg_assets.py geo-tile` |
+| Automated tests | 22 passing | `python -I -m unittest discover -s tests` |
 
-## Done in Phase 0
-- Disc structure, full file inventory, IP.BIN (T-9701N V1.006 1999-09-09).
-- Executable: memory map, SDK versions, C++ source paths, Ghidra import and auto-analysis.
-- Formats: `0.1v` container, IMG (ARGB1555 linear), GEO type 1 (float strips), KAT directory,
-  embedded animation tables.
-- MK4 cross-reference: shared lineage proven (naming, `0.1v`, 37-block Scorpion, animation
-  descriptor schema, packed pointers, wordcode scripts). mk4decomp pinned as permanent reference.
-- Tooling: GDI extractor, ELF wrapper, asset inspectors, function tracker.
+## Done in Phase 1
+- **Function discovery**: band boundaries (SDK / game / SDK), pointer and prologue seeding,
+  confirmed vs probable, byte coverage. → docs/reverse-engineering/function-discovery.md
+- **Combat VM**: entry `0x8C0DC920`, dispatcher `0x8C0DC960`, fetch `0x8C0E08E0`, table `0x8C322268`
+  (120 slots), pseudo-register model, wait mechanism, operand rules, control flow. The opcode numbering
+  matches MK4 PC. Opcode DB + standalone disassembler. → docs/systems/combat-vm.md
+- **Animation**: descriptor and frame layout. Packed rotation 10:11:11 decoded and **oracle-verified**
+  (`0x8C0692A0`). Root-translation reader located. Link to VM clip operands. → docs/systems/animation-engine.md
+- **GEO**: every block kind decoded (flag word; sprite records with 160-byte quad payloads).
+  New parser + fixtures. → docs/formats/geo-extended.md
+- **Dynamic analysis**: P-code oracle pipeline working end-to-end. Flycast 2.2.0 has no GDB stub
+  (tested). REA rejects SH-4 (tested). → docs/reverse-engineering/dynamic-analysis.md
+- **Corrections** to three Phase 0 claims (opcode numbering, script location, entry helpers), noted
+  in AUDIT.md and mk4-to-mkg.md.
 
-## Next (Phase 1)
-1. Function seeding: code pointers from data tables + SH-4 prologue scan → re-analyse (`CreateFunctions.java` from Manhunt 2).
-2. Tag SDK code (CRI/Shinobi error-string xrefs; FIDB only if the user supplies a Katana SDK).
-3. Locate main loop, frame tick, script VM interpreter and handler set behind `0x8C32AF14`.
-4. Run REA on `ORIGINAL/1ST_READ.elf` (first SH-4 test).
-5. Check whether Flycast 2.2.0 exposes the GDB server; otherwise plan a source build with GDB.
-6. Build the Ghidra-emulator oracle runner (`tests/oracle/`).
+## Recommended next targets (Phase 1 continued)
+1. **Oracle the VM core**: emulate `VM_FetchWord`, `VM_Dispatch` and a short real stream with stubbed
+   natives; reconstruct the fetch/dispatch/wait core in C and verify it.
+2. **Handler semantics**: read the ~40 most-used handlers (32, 05, 03, 34, 0F, 4A, 48, 27, 47, 12, 3F, 62)
+   and the natives they call; name opcodes from Gold behaviour.
+3. **Skeleton**: find the rig/hierarchy table, the Euler order (matrix builder after `0x8C0692A0`) and
+   the GEO-block ↔ joint binding; render one pose from extracted data as the first visual check.
+4. **Character ↔ script map**: tie the 623 entry seeds to their callers and to the roster
+   (`select` index `node[+0x34]`, 24 slots).
+5. **SDK tagging**: CRI and Shinobi string xrefs → `category=sdk` for `sdk_low`/`sdk_high`.
+6. **Dynamic**: decide on a GDB-enabled Flycast build (user decision), or parse save states for RAM snapshots.
 
 ## Decisions
-- Architecture A (reconstructed decomp) for the product. Static recomp rejected for shipping
-  (GPL-2.0 dcrecomp, unmoddable output, needs full HAL). See AUDIT §10.
+- Architecture A (reconstructed decomp) for the product; no recompiled code (AUDIT §10).
+- Oracle = Ghidra P-code emulator; vectors are versioned, replay needs only a C compiler.
+- Names stay address-based or mechanical until behaviour is proven. MK4 names are reference labels.
 - Repo docs in English (UMK3 / Manhunt 2 convention).

@@ -17,3 +17,12 @@ sega-dreamcast-info.com. Describes the **MK4 DC prototype** (not Gold).
 
 Not cloned yet: flycast (local 2.2.0 release in use), ImHex (not installed),
 dc-re-ghidra, gditools3 (own extractor in use), Dreamcast docs (Kochise/dreamcast-docs).
+
+## Tools tested in Phase 1
+
+| Tool | Version | Result |
+|---|---|---|
+| REA (`E:ea-rea-agents-6.3.0`, `node scripts/rea.mjs`) | 6.3.0 | Rejects `1ST_READ.elf` with "unsupported ELF architecture". The Windows Ghidra provider admits x86/x86-64 PE only. Kept for the native port binaries. |
+| Flycast (`Dreamcast/flycast.exe`) | 2.2.0 release | No GDB RSP stub compiled in (tested; see dynamic-analysis.md). |
+| Ghidra P-code emulator (`EmulatorHelper`) | 12.1.2 | Works for SH-4 incl. FPU; used as the oracle. |
+| open-mk4 opcode taxonomy | `85a515a` | Used as **reference labels** only (`mk4:<name>`); Gold operand rules come from Gold handlers. |
