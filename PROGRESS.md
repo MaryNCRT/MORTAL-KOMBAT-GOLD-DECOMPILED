@@ -6,6 +6,7 @@
 
 | Path | What |
 |---|---|
+| Repo | https://github.com/MaryNCRT/MORTAL-KOMBAT-GOLD-DECOMPILED (`main`). Only code and docs are versioned. |
 | `ISO/` | Original GDI (53 tracks). **Read-only.** |
 | `Dreamcast/` | Flycast 2.2.0 + identical copy of the GDI in `Roms/`. Do not modify. |
 | `EXTRACTED/disc/` | 375 files extracted from the disc; `EXTRACTED/IP.BIN`. |
